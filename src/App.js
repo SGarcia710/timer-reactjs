@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Timer from "react-compound-timer";
 
-function App() {
+const App = ({ minutes }) => {
+  const time = minutes * 60000
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Timer initialTime={time} direction="backward">
+      {() => (
+        <>
+          <Timer.Minutes />:<Timer.Seconds />
+        </>
+      )}
+    </Timer>
   );
-}
+};
 
 export default App;
